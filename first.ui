@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>484</width>
+    <height>434</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QPushButton" name="btn_push_file">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>130</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>推送音频</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_play_music">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>180</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>播放音频</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_del_file">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>230</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>删除音频</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_push_file_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Load FW File</string>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="fileT">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>10</y>
+     <width>331</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
