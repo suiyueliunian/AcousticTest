@@ -19,6 +19,7 @@ linsten_lock = threading.Lock()
 
 def upgrade_callback(total_packets, file_size, file_name):
     print('hhh')
+    print('hhddh')
 
 
 
