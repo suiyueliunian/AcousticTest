@@ -10,7 +10,7 @@ from time import sleep
 
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from first import *
+from mainWidget import *
 
 
 ser = serial.Serial(bytesize=8, parity='N', stopbits=1, timeout=1, write_timeout=3)
@@ -19,7 +19,7 @@ linsten_lock = threading.Lock()
 
 def upgrade_callback(total_packets, file_size, file_name):
     print('hhh')
-    print('66666')
+    print('hhddh')
 
 
 

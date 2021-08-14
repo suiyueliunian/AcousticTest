@@ -30,6 +30,10 @@ class Ui_Form(object):
         self.fileT = QtWidgets.QTextBrowser(Form)
         self.fileT.setGeometry(QtCore.QRect(120, 10, 331, 31))
         self.fileT.setObjectName("fileT")
+        self.progressBar = QtWidgets.QProgressBar(Form)
+        self.progressBar.setGeometry(QtCore.QRect(130, 130, 251, 23))
+        self.progressBar.setProperty("value", 24)
+        self.progressBar.setObjectName("progressBar")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -41,24 +45,3 @@ class Ui_Form(object):
         self.btn_play_music.setText(_translate("Form", "播放音频"))
         self.btn_del_file.setText(_translate("Form", "删除音频"))
         self.btn_push_file_2.setText(_translate("Form", "Load FW File"))
-
-
-class MyWindow(QtWidgets.QWidget, Ui_Form):
-    def __init__(self, parent=None):
-        super(MyWindow, self).__init__()
-        self.fileName =''
-        self.setupUi(self)
-        self.btn_push_file_2.clicked.connect(self.msg)
-
-    def msg(self, Filepath):
-        directory = QtWidgets.QFileDialog.getOpenFileName(self, "选取文件", "./", "*.mp3")
-        print('hh ：', directory)
-        fileName = directory[0]
-        self.fileT.setText(fileName)
-
-    def connectPushFile(self,func):
-        self.btn_push_file.clicked.connect(func)
-
-    def getFileName(self):
-        return  self.fileName
-
