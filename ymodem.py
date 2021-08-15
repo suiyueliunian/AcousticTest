@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-# -*- coding: utf-8 -*-
+from PyQt5.QtCore import QObject
 
 import logging
 from time import sleep
@@ -18,7 +18,7 @@ CAN = b'\x18'
 CRC = b'C'
 
 
-class YMODEM(object):
+class YMODEM(QObject):
 
     # initialize
     def __init__(self, getc, putc, mode='ymodem', header_pad=b'\x00', pad=b'\x1a'):
