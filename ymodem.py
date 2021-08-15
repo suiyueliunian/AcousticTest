@@ -118,7 +118,7 @@ class YMODEM(object):
 
         error_count = 0
         cancel = 0
-        total_packets = 1
+        total_packets = 0
         sequence = 1
         sleep(1)
         while True:
@@ -127,7 +127,8 @@ class YMODEM(object):
             if not data:
                 self.log.debug('send: at EOF')
                 break
-            total_packets += 1
+            print(len(data))
+            total_packets += len(data)
 
             header = self._make_send_header(packet_size, sequence)
             data = data.ljust(packet_size, self.pad)

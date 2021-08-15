@@ -20,3 +20,6 @@ class MyWindow(QtWidgets.QWidget, Ui_Form):
     def getFileName(self):
         return  self.fileName
 
+    def changeProgress(self,value):
+        self.progressBar.setValue(value)
+

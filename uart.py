@@ -7,21 +7,11 @@
 
   #      self.fileName =''
 
-'''
-        self.btn_push_file_2.clicked.connect(self.msg)
+import serial.tools.list_ports
 
-    def msg(self, Filepath):
-        directory = QtWidgets.QFileDialog.getOpenFileName(self,  "选取文件","./","*.mp3")
-        print('hh ：',directory)
-        self.fileName =directory[0]
-        self.fileT.setText(self.fileName)
+class uart(object):
+    ipaddress
 
-    def connectPushFile(self,func):
-        print('filename',self.fileName)
-        self.btn_push_file.clicked.connect(func)
 
-    def getFileName(self):
-        return  self.fileName
-'''
 
 

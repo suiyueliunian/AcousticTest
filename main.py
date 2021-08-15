@@ -6,6 +6,8 @@ import serial.tools.list_ports
 import threading
 from ymodem import YMODEM
 import os
+
+import PyQt5.QtCore as PQC
 from time import sleep
 
 import sys
@@ -16,12 +18,22 @@ from mainWidget import *
 ser = serial.Serial(bytesize=8, parity='N', stopbits=1, timeout=1, write_timeout=3)
 linsten_lock = threading.Lock()
 
+def sender_getc(size):
+    return ser.read(size) or None
+
+
+def sender_putc(data):
+    send_data_mutex.acquire()
+    ser.write(data)
+    send_data_mutex.release()
+
+ymodem_sender = YMODEM(sender_getc, sender_putc)
+
+
 
 def upgrade_callback(total_packets, file_size, file_name):
-    print('hhh')
-    print('hhddh')
-
-
+    print(round(float(total_packets)/file_size,4)*100,'%')
+#    myWin.changeProgress(round(float(total_packets)/file_size,4)*100)
 
 def ymodem_send(file):
     global ymodem_sender
@@ -51,28 +63,12 @@ def ymodem_send(file):
 
 
 
-def sender_getc(size):
-    return ser.read(size) or None
-
-
-def sender_putc(data):
-    send_data_mutex.acquire()
-    ser.write(data)
-    send_data_mutex.release()
 
 
 send_data_mutex = threading.Lock()
-ymodem_sender = YMODEM(sender_getc, sender_putc)
 
 
 
-
-def main():
-    ser.port = "com30"
-    ser.baudrate = 115200  # int(baud_rate)
-    ser.open()
-    print("hhh")
-    ymodem_send("./1.txt")
 
 def sendMp3File(self):
     print('dddddd')
@@ -84,12 +80,17 @@ def sendMp3File(self):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
 
-    ser.port = "com30"
-    ser.baudrate = 115200  # int(baud_rate)
-    ser.open()
+    for port in serial.tools.list_ports.comports():
+        print(port.hwid,port.name)
+        if port.hwid.find('2C7C:6001')>=0 and port.hwid.find('x.5')>=0:
+            ser.port = port.name
+            ser.baudrate = 115200  # int(baud_rate)
+            ser.open()
+            break
 
     myWin = MyWindow()
     myWin.connectPushFile(sendMp3File)
+    myWin.show()
     myWin.show()
     sys.exit(app.exec_())
 
